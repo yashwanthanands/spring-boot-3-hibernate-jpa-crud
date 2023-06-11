@@ -23,8 +23,25 @@ public class SpringBootCrudApplication {
 			// readStudent(studentDAO);
 			// queryForStudents(studentDAO);
 			// queryForStudentsOrderByLastName(studentDAO);
-			   queryForStudentsByLastName(studentDAO);
+			// queryForStudentsByLastName(studentDAO);
+			 updateStudent(studentDAO);
 		};
+	}
+
+	private void updateStudent(StudentDAO studentDAO) {
+		// retrieve the student based on the id : primaryKey
+			Student tempStudent = studentDAO.findById(1);
+		// change the firstName to Yashwanth
+		System.out.println("Retrieve the student "+tempStudent);
+		System.out.println("Updating the student");
+		tempStudent.setFirstName("Yash");
+
+		// Update the student in DB
+		studentDAO.update(tempStudent);
+		System.out.println("Student Updated");
+
+		// display the updated student
+		System.out.println("Updated Student "+tempStudent);
 	}
 
 	private void queryForStudentsByLastName(StudentDAO studentDAO) {
