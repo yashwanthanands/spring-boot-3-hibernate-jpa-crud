@@ -24,8 +24,21 @@ public class SpringBootCrudApplication {
 			// queryForStudents(studentDAO);
 			// queryForStudentsOrderByLastName(studentDAO);
 			// queryForStudentsByLastName(studentDAO);
-			 updateStudent(studentDAO);
+			// updateStudent(studentDAO);
+			   deleteStudent(studentDAO);
 		};
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		// retrieve the student based on the id : primaryKey
+		Student tempStudent = studentDAO.findById(4);
+\
+		System.out.println("Retrieve the student "+tempStudent);
+
+		// Delete the student in DB
+		studentDAO.delete(tempStudent.getId());
+		System.out.println("Student Deleted");
+
 	}
 
 	private void updateStudent(StudentDAO studentDAO) {
