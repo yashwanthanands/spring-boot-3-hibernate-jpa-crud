@@ -73,6 +73,16 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     @Transactional
+    public int updateStudentsByLastName(String theLastName) {
+        // create query
+        int updatedRows = entityManager.createQuery("UPDATE Student SET lastName='Tester'").executeUpdate();
+
+        // return the count of updatedRows
+        return updatedRows;
+    }
+
+    @Override
+    @Transactional
     public void delete(Integer id) {
         // retrieve the Student
         Student theStudent = entityManager.find(Student.class,id);
@@ -85,7 +95,17 @@ public class StudentDAOImpl implements StudentDAO {
         // create query
         int deletedRows = entityManager.createQuery("DELETE FROM Student").executeUpdate();
 
-        // return query results order by lastName ascending
+        // return the count of deletedRows
+        return deletedRows;
+    }
+
+    @Override
+    @Transactional
+    public int deleteStudentsByLastName(String theLastName) {
+        // create query
+        int deletedRows = entityManager.createQuery("DELETE Student WHERE lastName='Tester'").executeUpdate();
+
+        // return the count of deletedRows
         return deletedRows;
     }
 }
