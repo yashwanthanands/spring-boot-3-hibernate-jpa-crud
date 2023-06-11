@@ -21,7 +21,8 @@ public class SpringBootCrudApplication {
 			// createStudent(studentDAO):
 			// createMultipleStudents(studentDAO);
 			// readStudent(studentDAO);
-			   queryForStudents(studentDAO);
+			// queryForStudents(studentDAO);
+			   queryForStudentsOrderByLastName(studentDAO);
 
 		};
 	}
@@ -29,6 +30,17 @@ public class SpringBootCrudApplication {
 	private void queryForStudents(StudentDAO studentDAO) {
 		// get a list of students
 		List<Student> theStudents = studentDAO.findAll();
+
+		// display list of students
+		for(Student tempStudent: theStudents) {
+			System.out.println(tempStudent);
+		}
+
+	}
+
+	private void queryForStudentsOrderByLastName(StudentDAO studentDAO) {
+		// get a list of students
+		List<Student> theStudents = studentDAO.findAllOrderByLastName();
 
 		// display list of students
 		for(Student tempStudent: theStudents) {
