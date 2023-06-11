@@ -17,12 +17,31 @@ public class SpringBootCrudApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			createStudent(studentDAO);
+			createMultipleStudents(studentDAO);
 		};
+	}
+
+	private void createMultipleStudents(StudentDAO studentDAO) {
+
+		// create multiple students
+		System.out.println("Creating 3 student objects...");
+		Student student1=new Student("Hari","Anand","hari@gmail.com");
+		Student student2=new Student("Anakin","Skywalker","anakin@gmail.com");
+		Student student3=new Student("Luke","Skywalker","luke@gmail.com");
+
+
+		//	save the multiple student objects
+		System.out.println("Saving the students....");
+		studentDAO.save(student1);
+		studentDAO.save(student2);
+		studentDAO.save(student3);
+		System.out.println("Students Saved.");
+
 	}
 
 	private void createStudent(StudentDAO studentDAO) {
 		//creating new student object
+		System.out.println("Creating new student object...");
 		Student student=new Student("Yashwanth","Anand","yash@gmail.com");
 
 		// save the student object
