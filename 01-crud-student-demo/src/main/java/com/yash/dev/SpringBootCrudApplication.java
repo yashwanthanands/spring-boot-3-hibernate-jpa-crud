@@ -17,8 +17,32 @@ public class SpringBootCrudApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			createMultipleStudents(studentDAO);
+			// createStudent(studentDAO):
+			// createMultipleStudents(studentDAO);
+			readStudent(studentDAO);
 		};
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+
+		// create a student object
+		System.out.println("Creating new student object...");
+		Student tempStudent= new Student("James","Franklin","james@gmail.com");
+
+		// save the student
+		System.out.println("Saving the student....");
+		studentDAO.save(tempStudent);
+
+		// display the id of the saved student
+		int theId=tempStudent.getId();
+		System.out.println("Saved Student. Generated ID :"+theId);
+
+		// retrieve the student based on the id : primary key
+		System.out.println("Retrieve the student by id "+theId);
+		Student mystudent= studentDAO.findById(theId);
+
+		// display the student
+		System.out.println("Found the student "+mystudent);
 	}
 
 	private void createMultipleStudents(StudentDAO studentDAO) {

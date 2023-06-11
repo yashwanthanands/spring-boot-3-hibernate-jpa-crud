@@ -8,4 +8,6 @@ import com.yash.dev.entity.Student;
 public interface StudentDAO {
 
     public void save(Student theStudent);
+
+    Student findById(Integer id);
 }
